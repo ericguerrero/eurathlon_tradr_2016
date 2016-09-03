@@ -1,0 +1,43 @@
+# map_type: costmap
+obstacle_range: 20
+
+raytrace_range: 10
+footprint: [[0.8, 0], [0.6, 0.16], [-0.8,0.16], [-0.8, -0.16], [0.6, -0.16]]
+footprint_padding: 0.02
+inflation_radius: 1.0
+# transform_tolerance: 0.2
+map_type: costmap
+track_unknown_space: true
+combination_method: 1
+observation_sources: laser_cloud
+laser_cloud: {
+               sensor_frame: ugv1/base_link,
+               data_type: PointCloud2,
+               topic: /vrep/ugv1/scan_point_cloud_color_filtered,
+               expected_update_rate: 0.5,
+               observation_persistence: 0.0,
+               marking: true,
+               clearing: true}
+               # max_obstacle_height: 2.5,
+               # min_obstacle_height: 0.2
+
+
+# obstacle_range: 20
+
+# raytrace_range: 10
+# footprint: [[0.8, 0], [0.6, 0.16], [-0.8,0.16], [-0.8, -0.16], [0.6, -0.16]]
+# footprint_padding: 0.02
+# inflation_radius: 1.0
+# # transform_tolerance: 0.2
+# map_type: costmap
+# track_unknown_space: true
+# combination_method: 1
+# observation_sources: laser_cloud
+# laser_cloud: {
+#                sensor_frame: /ugv1/base_link,
+#                data_type: nav_msgs/OccupancyGrid,
+#                topic: /projected_map,
+#                expected_update_rate: 0.5,
+#                observation_persistence: 0.0,
+#                marking: true,
+#                clearing: true}

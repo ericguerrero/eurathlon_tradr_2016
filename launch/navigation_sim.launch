@@ -1,0 +1,24 @@
+<launch>
+	<arg name="use_octomap" default="True" />
+
+
+	<!-- SLAM 		(Obtain PointCloud) -->
+	<include file="$(find summer_school_launchers)/launch/summer_school_planning_map_sim.launch"/>
+
+	<!-- Filter Pointcloud -->
+	<node pkg="eurathlonTRADR2016" type="pcl_filter" name="pcl_filter" output="screen">
+  	</node>
+
+	<!-- Costmap	(Project Ocupancy) -->
+	<!-- <include file="$(find eurathlonTRADR2016)/launch/octomap_mapping.launch"/> -->
+
+	<!-- Planner 	(Navigation Stack)-->
+	<include file="$(find eurathlonTRADR2016)/launch/move_base.launch"/>
+
+	<!-- Convert from twist to angular wheel velocities -->
+	<node pkg="eurathlonTRADR2016" type="velocity_conversion" name="velocity_conversion" output="screen">
+	 	<remap from="tracks" to="/vrep/ugv1/tracks_vel_cmd"/>
+	</node>
+
+
+</launch>
